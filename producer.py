@@ -21,8 +21,6 @@ def connect_to_rabbitmq():
 def main():
     connection = connect_to_rabbitmq()
     channel = connection.channel()
-    
-    # Declarar la cola durable
     channel.queue_declare(queue='chat_queue', durable=True)
     
     print("Bienvenido al productor de mensajes!")
@@ -39,7 +37,7 @@ def main():
                 routing_key='chat_queue',
                 body=message,
                 properties=pika.BasicProperties(
-                    delivery_mode=2,  # make message persistent
+                    delivery_mode=2,
                 ))
             print(f" [x] Mensaje enviado: '{message}'")
     except KeyboardInterrupt:
