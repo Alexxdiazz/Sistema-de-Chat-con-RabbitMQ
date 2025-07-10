@@ -16,4 +16,5 @@ para ejecutar, descargar: librería de Python "pika" , pip install pika en cdm
   y finalmente; ejecutar el programa, en la terminal  utilizando el comando, docker-compose up --build.
   En la terminal para iniciar el consumidor:python consumer.py, y para el productor, python producer.py
 
+Profe, me costó bastante por mi computadora, no funcionó del todo con Docker.
 
