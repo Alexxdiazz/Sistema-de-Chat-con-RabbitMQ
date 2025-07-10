@@ -20,22 +20,16 @@ def connect_to_rabbitmq():
 
 def callback(ch, method, properties, body):
     print(f" [x] Mensaje recibido: {body.decode()}")
-    # Confirmar manualmente el procesamiento del mensaje
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
 def main():
     connection = connect_to_rabbitmq()
     channel = connection.channel()
-    
-    # Declarar la misma cola durable
+
     channel.queue_declare(queue='chat_queue', durable=True)
-    
-    # Configurar el prefetch_count para controlar cuántos mensajes se envían al consumidor a la vez
     channel.basic_qos(prefetch_count=1)
     
     print(' [*] Esperando mensajes. Presiona Ctrl+C para salir')
-    
-    # Configurar el consumidor con acknowledgment manual
     channel.basic_consume(queue='chat_queue', on_message_callback=callback)
     
     try:
