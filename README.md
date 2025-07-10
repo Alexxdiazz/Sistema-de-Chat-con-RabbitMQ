@@ -7,7 +7,7 @@ consumer.py: se mantiene escuchando la cola y muestra en consola los mensajes re
 Ambos scripts se comunican a través de chat_queue, utilizando RabbitMQ como sistema de mensajería.
 para ejecutar, descargar: librería de Python "pika" , pip install pika en cdm
  y Docker para correr RabbitMQ.
- para levantar Docker con Rabbitmq: en cdm:
+Para levantar Docker con Rabbitmq: en cdm:
  docker run -d --hostname rabbit --name rabbitmq \
   -e RABBITMQ_DEFAULT_USER=admin \
   -e RABBITMQ_DEFAULT_PASS=admin \
